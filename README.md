@@ -1,6 +1,6 @@
 # Rich Garner - Resume Website
 
-A professional, responsive resume website showcasing Rich Garner's experience as a Senior Web Applications Developer with 20+ years in web development, UI/UX design, and accessibility compliance.
+A professional, responsive resume website showcasing Rich Garner's experience as a Senior Web Applications Developer with 20+ years in web development, UI/UX design, and accessibility compliance. Built in under five minutes using DeepAgent's Abicus.ai to boost productivity. Code was driven, checked and edited before posting.
 
 ## 🌐 Live Website
 
