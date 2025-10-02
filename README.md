@@ -4,7 +4,7 @@ A professional, responsive resume website showcasing Rich Garner's experience as
 
 ## 🌐 Live Website
 
-**Visit the live resume:** [[https://richgarner71.github.io/rich-garner-resume/]([https://richgarner71.github.io/rich_garner_resume/](https://richgarner71.github.io/rich_garner_resume/))]([https://richgarner71.github.io/rich-garner-resume/](https://richgarner71.github.io/rich_garner_resume/))
+**Visit the live resume:** [[https://richgarner71.github.io/rich-garner-resume/]([https://richgarner71.github.io/rich_garner_resume/](https://richgarner71.github.io/rich_garner_resume/))]
 
 ## 📋 Features
 
