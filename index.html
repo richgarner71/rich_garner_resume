@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rich Garner - Resume</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    /* Base theme (screen) */
+    :root {
+    --bg: #121212;
+    --card: #181818;
+    --text: #e6e6e6;
+    --subtext: #c2c2c2;
+    --accent: #ff7a18;
+    --line: rgba(255, 122, 24, 0.35);
+    }
+
+    html, body { margin: 0; padding: 0; }
+    body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.65; /* comfortable line spacing */
+    }
+    a { color: var(--text); border-bottom: 1px dotted var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent); }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 28px; }
+
+    header {
+    display: flex; flex-wrap: wrap;
+    justify-content: space-between; align-items: center;
+    margin-bottom: 24px;
+    gap: 18px;
+    }
+    header h1 { font-size: 2.25rem; margin: 0; line-height: 1.2; }
+    header p { color: var(--subtext); margin: 6px 0; }
+
+    .portrait {
+    width: 132px; height: 132px;
+    border-radius: 50%; object-fit: cover;
+    border: 4px solid var(--accent);
+    }
+
+    /* Download PDF Button */
+    .download-btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 16px 0;
+    text-decoration: none;
+    border-bottom: none;
+    box-shadow: 0 4px 12px rgba(255, 122, 24, 0.3);
+    }
+    .download-btn:hover {
+    background: #ff8c3a;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 122, 24, 0.4);
+    }
+
+    /* Notes sections */
+    .notes-section {
+    background: rgba(255, 122, 24, 0.08);
+    border-left: 4px solid var(--accent);
+    padding: 16px;
+    margin: 16px 0;
+    border-radius: 6px;
+    }
+    .notes-section h4 {
+    color: var(--accent);
+    margin: 0 0 10px 0;
+    font-size: 1rem;
+    }
+    .notes-area {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 10px;
+    min-height: 80px;
+    color: var(--subtext);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    font-family: 'Courier New', monospace;
+    }
+
+    .card {
+    background: var(--card);
+    padding: 26px;
+    border-radius: 12px;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.05), 0 10px 24px rgba(0,0,0,0.45);
+    }
+
+    section { padding: 26px 0; }
+    section + section {
+    border-top: 1px solid var(--line);
+    margin-top: 6px;
+    }
+
+    h2 { color: var(--accent); margin: 0 0 12px 0; line-height: 1.3; }
+    h3 { margin: 18px 0 8px; line-height: 1.35; }
+    p { margin: 8px 0; }
+
+    /* Diamond bullets */
+    ul { list-style: none; padding-left: 1.4rem; margin: 10px 0; }
+    ul li {
+    position: relative;
+    padding-left: 1.1rem;
+    margin-bottom: 10px; /* space for handwritten notes */
+    }
+    ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.75em;
+    width: 8px; height: 8px;
+    background: var(--accent);
+    transform: rotate(45deg);
+    }
+
+    footer { text-align: center; color: var(--subtext); font-size: 0.85rem; margin-top: 24px; }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+    .container { padding: 20px; }
+    header { align-items: flex-start; }
+    .portrait { width: 120px; height: 120px; }
+    }
+
+    /* Print-friendly mode */
+    @media print {
+    @page { margin: 0.6in; }
+    :root {
+    --bg: #ffff;
+    --card: #ffff;
+    --text: #1111;
+    --subtext: #3333;
+    --accent: #0000; /* black diamonds for crisp print */
+    --line: #cccc;
+    }
+    body { background: #ffff; color: var(--text); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .container { max-width: none; padding: 0; }
+    header { margin-bottom: 12px; }
+    a { color: var(--text); border-bottom: 1px solid #999; text-decoration: none; }
+    .card { background: #ffff; box-shadow: none; border: 1px solid #e5e5e5; padding: 20px; }
+    section { padding: 18px 0; }    /* slightly tighter padding for a single page */
+    section + section { border-top: 1px solid var(--line); margin-top: 4px; }
+    h2 { color: #000; }
+    ul li::before { background: #000; }    /* black diamonds in print */
+    .portrait { border: 2px solid #444; }  /* subtle print border */
+    .download-btn { display: none; } /* hide download button in print */
+    .notes-section { display: none; } /* hide notes in print */
+
+    /* Avoid awkward page breaks */
+    header, section, h3, ul, li { page-break-inside: avoid; }
+    footer { margin-top: 10px; color: #666; }
+
+    /* Optional: show URLs after links for print readers */
+    a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em; color: #666;
+    }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+    <div>
+    <h1>Rich Garner</h1>
+    <p>Senior Web Applications Developer | Senior Web Developer | Web Administrator</p>
+    <p>Ashburn, VA • <a href="mailto:RichGarner71@Gmail.com">RichGarner71@Gmail.com</a> • <a href="tel:7578690361">757-869-0361</a></p>
+    <p><a href="https://linkedin.com/in/RichGarner71">linkedin.com/in/RichGarner71</a></p>
+    <a href="RichGarner_2025_SeniorWeb.pdf" download class="download-btn">📄 Download PDF Resume</a>
+    </div>
+    <!-- Portrait image -->
+    <img src="PXL_20210929_103955015.PORTRAIT.jpg" alt="Portrait of Rich Garner" class="portrait" />
+    </header>
+
+    <!-- Contact Notes Section -->
+    <div class="notes-section">
+    <h4>📝 Contact Notes</h4>
+    <div class="notes-area">
+    [Space for interview scheduling, follow-up reminders, or contact preferences]
+    </div>
+    </div>
+
+    <div class="card">
+    <section>
+    <h2>Professional Summary</h2>
+    <p>
+    Highly skilled Front-End Developer and Web Application Engineer with 20+ years in web development, instructional design, UI/UX, and accessibility compliance (Section 508, WCAG 2). Experienced in building robust, feature-rich applications using HTML5/CSS3, JavaScript, Node.js, PHP, React, and related libraries. Strong background in building performant websites from scratch, leading teams, collaborating across projects, and adopting new technologies to optimize development workflows.
+    </p>
+    </section>
+
+    <section>
+    <h2>Technical Skills</h2>
+    <ul>
+    <li>Web Development: HTML5, CSS3, SASS, JavaScript (jQuery, EXTJS, AJAX, Angular, Node, React), Flex, ActionScript, XML, Section 508, WCAG 2, Microsoft VSC</li>
+    <li>Frameworks & Tools: Jekyll, 11ty, GitHub (deployment), ASP.NET, JSON, PHP, Drupal, WordPress, Joomla, AI image generation, JAWS, ANDI</li>
+    <li>Design & UX/UI: Advanced User Experience (UX) and User Interface (UI) Design</li>
+    <li>Web-Based Training: Interactive training products and multimedia resources</li>
+    <li>Analytics: Google Analytics, SEO integration</li>
+    </ul>
+    </section>
+
+    <!-- Interview Notes Section -->
+    <div class="notes-section">
+    <h4>💼 Interview Notes</h4>
+    <div class="notes-area">
+    [Space for key discussion points, technical questions asked, or follow-up items]
+    </div>
+    </div>
+
+    <section>
+    <h2>Professional Experience</h2>
+
+    <h3>DTS LLC — Senior Web Applications Developer (Jan 2020 – Present, Arlington, VA)</h3>
+    <ul>
+    <li>Designed, developed, deployed, and maintained web portals for GSA's FEDSIM and AAS.</li>
+    <li>Supported Google Analytics for GSA projects.</li>
+    <li>Maintained DTS-hosted online courses for FEDSIM University.</li>
+    <li>Developed and deployed accessible components ensuring 508/WCAG compliance.</li>
+    <li>Utilized GitHub admin tools for advanced deployments.</li>
+    </ul>
+
+    <h3>NCI Inc. — Software Engineer (Jul 2017 – Jan 2020, Tysons Corner, VA)</h3>
+    <ul>
+    <li>Maintained Flex components for GIMS, SMMS, RCMS, PASS, PRAS.</li>
+    <li>Established debugging baseline and supported testing environments.</li>
+    <li>Managed ActionScript developer on team projects.</li>
+    </ul>
+
+    <h3>MKGCS LLC. — Software Applications Developer (Jun 2016 – Jun 2017, Herndon, VA)</h3>
+    <ul>
+    <li>Supported MARRS contract with Flex, ASP.NET, and SQL.</li>
+    <li>Designed and maintained team UI/UX standards.</li>
+    <li>Built and deployed front-end features with HTML5, CSS3, and JavaScript.</li>
+    </ul>
+
+    <h3>Exelis Inc. — Software Engineer (Feb 2013 – Jun 2016, Chesapeake, VA)</h3>
+    <ul>
+    <li>Developed interactive mobile tools with Flex, ActionScript, SQL, ColdFusion, EXTJS.</li>
+    <li>Created Mobile Inspection Assistant for facility inspections.</li>
+    </ul>
+
+    <h3>Garner New Media — VP/Creative Director (Jan 2010 – Feb 2013, Virginia Beach, VA)</h3>
+    <ul>
+    <li>Designed and deployed small business websites with HTML, CSS, and JavaScript.</li>
+    <li>Led UX/UI design for client projects.</li>
+    </ul>
+
+    <h3>General Dynamics — Multimedia Specialist (Dec 2011 – Oct 2012, Chesapeake, VA)</h3>
+    <ul>
+    <li>Built web training templates using Flash, Photoshop, SharePoint, JavaScript, CSS, HTML.</li>
+    <li>Developed SCORM Comment Tool integrated with SCORM API.</li>
+    </ul>
+
+    <h3>Amerigroup — Web Developer / Instructional Designer (Apr 2006 – Sept 2009, Virginia Beach, VA)</h3>
+    <ul>
+    <li>Led UI/UX design for intranet-based training sites.</li>
+    <li>Developed A-Train Learning Environment for modular training delivery.</li>
+    </ul>
+
+    <h3>Computer Sciences Corporation — Associate Member of the Technical Staff (Sept 2001 – Apr 2006, Hampton, VA)</h3>
+    <ul>
+    <li>Built Flash training products for DOD projects.</li>
+    <li>Trained and supervised developers in Flash and ActionScript.</li>
+    </ul>
+    </section>
+
+    <section>
+    <h2>Education</h2>
+    <ul>
+    <li><strong>Saint Leo University</strong> — Associates Degree in Computer Arts & Computer Science (2000)</li>
+    </ul>
+    </section>
+
+    <section>
+    <h2>Certifications & Training</h2>
+    <ul>
+    <li>Section 508 Compliance Training - DTS LLC / GSA (Annual)</li>
+    <li>Security Clearance Level - SECRET (Inactive)</li>
+    </ul>
+    </section>
+
+    <!-- General Notes Section -->
+    <div class="notes-section">
+    <h4>📋 General Notes</h4>
+    <div class="notes-area">
+    [Space for additional observations, cultural fit notes, or next steps]
+    </div>
+    </div>
+    </div>
+
+    <footer>
+    © 2025 Rich Garner
+    </footer>
+  </div>
+</body>
+</html>
